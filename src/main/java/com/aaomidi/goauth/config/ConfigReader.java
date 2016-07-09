@@ -10,6 +10,14 @@ public class ConfigReader {
 	private static FileConfiguration config;
 	private static String baseURL;
 	private static String key;
+	private static String prefix;
+
+	public static String getPrefix() {
+		if (prefix == null) {
+			prefix = config.getString("General-Settings.Prefix");
+		}
+		return prefix;
+	}
 
 	public static String getBaseURL() {
 		if (baseURL == null) {

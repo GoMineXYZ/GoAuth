@@ -1,3 +1,5 @@
+General-Settings:
+  Prefix: "&4Go&7Auth &0&l>> "
 API-Settings:
   Base-URL: https://GoMine.xyz/api.php
   Key: 123
