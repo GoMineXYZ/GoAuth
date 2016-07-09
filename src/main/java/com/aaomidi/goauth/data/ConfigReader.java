@@ -1,4 +1,4 @@
-package com.aaomidi.goauth.config;
+package com.aaomidi.goauth.data;
 
 import lombok.Getter;
 import lombok.Setter;

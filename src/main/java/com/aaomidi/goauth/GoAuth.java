@@ -1,7 +1,7 @@
 package com.aaomidi.goauth;
 
 
-import com.aaomidi.goauth.config.ConfigReader;
+import com.aaomidi.goauth.data.ConfigReader;
 import lombok.Getter;
 import org.bukkit.plugin.java.JavaPlugin;
 import xyz.mkotb.xenapi.XenAPI;
