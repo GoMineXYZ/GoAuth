@@ -1,6 +1,7 @@
 package com.aaomidi.goauth.events;
 
 import com.aaomidi.goauth.GoAuth;
+import com.aaomidi.goauth.data.CacheHandler;
 import com.aaomidi.goauth.model.User;
 import com.aaomidi.goauth.utils.Lang;
 import org.bukkit.entity.Player;
@@ -27,13 +28,18 @@ public class LoginEvent implements Listener {
 		Player player = event.getPlayer();
 		XenAPI xenAPI = instance.getXenAPI();
 		BukkitScheduler scheduler = instance.getServer().getScheduler();
+
 		User user = new User(player);
+		CacheHandler.cachePlayer(player, user);
+
 		scheduler.runTaskAsynchronously(instance, () -> {
 			try {
 				GetUserResponse resp = xenAPI.getUser(new GetUserRequest(player.getName()));
 
 				scheduler.runTask(instance, () -> {
 					user.setRegistered(true);
+					player.sendMessage(Lang.getBLANK());
+					player.sendMessage(Lang.getLoginText());
 				});
 
 			} catch (XenAPIException ex) {

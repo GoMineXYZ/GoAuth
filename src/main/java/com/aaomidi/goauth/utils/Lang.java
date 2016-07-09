@@ -25,6 +25,12 @@ public class Lang {
 					"You can register ingame or on &4https://GoMine.xyz/\n" +
 					"To register ingame just use &4/register&f and follow the onscreen instructions!\n" +
 					"&b-----------------------";
+	private static String LOGIN_TEXT =
+			"&b----------------------\n" +
+					"Heya! The account you're currently on has been registered on this server.\n" +
+					"Please use &4/login &fand follow the onscreen instructions to login!\n" +
+					"If you've forgot your password, you can reset it at &chttps://GoMine.xyz\n" +
+					"&b-----------------------";
 
 	public static String colorize(String string) {
 		return ChatColor.translateAlternateColorCodes('&', string);
@@ -43,5 +49,12 @@ public class Lang {
 			REGISTER_TEXT = colorize(REGISTER_TEXT);
 		}
 		return REGISTER_TEXT;
+	}
+
+	public static String getLoginText() {
+		if (LOGIN_TEXT.contains("&")) {
+			LOGIN_TEXT = colorize(LOGIN_TEXT);
+		}
+		return LOGIN_TEXT;
 	}
 }

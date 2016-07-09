@@ -9,9 +9,9 @@ public class User {
 	@Getter
 	private final Player player;
 	@Getter
-	private boolean fetched = false;
-	private boolean authenticated = false;
-	private boolean registered = false;
+	private boolean fetched = false; // Got information from XenForo
+	private boolean authenticated = false; // Authenticated with XenForo
+	private boolean registered = false; // Registered on XenForo
 
 	public void changePassword(String newPassword) {
 		//TODO
