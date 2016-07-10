@@ -31,6 +31,11 @@ public class Lang {
 					"Please use &4/login &fand follow the onscreen instructions to login!\n" +
 					"If you've forgot your password, you can reset it at &chttps://GoMine.xyz\n" +
 					"&b-----------------------";
+	private static String REGISTER_EMAIL_TEXT = "&bPlease enter your email here";
+    private static String CONFIRM_MESSAGE = "&bYou entered &4%s&b, would you like to proceed? (yes or no)";
+    private static String INVALID_INPUT_MESSAGE = "&bPlease enter a valid &4%s&b, you entered: %s";
+    private static String PASSWORD_TEXT = "&bPlease enter your password here (Minimum 8 characters at least 1 Uppercase, 1 Lowercase and 1 Number)";
+    private static String REGISTER_ERROR_TEXT = "&4There was an error registering your account, sorry! (error code: %d)";
 
 	public static String colorize(String string) {
 		return ChatColor.translateAlternateColorCodes('&', string);
@@ -41,7 +46,7 @@ public class Lang {
 	}
 
 	public static void sendMessage(CommandSender commandSender, Object o, Object... format) {
-		commandSender.sendMessage(colorize(String.format(getPREFIX() + o.toString(), format)));
+        commandSender.sendMessage(colorize(String.format(getPREFIX() + o.toString(), format)));
 	}
 
 	public static String getRegisterText() {
@@ -57,4 +62,39 @@ public class Lang {
 		}
 		return LOGIN_TEXT;
 	}
+
+    public static String getRegisterEmailText() {
+        if (REGISTER_EMAIL_TEXT.contains("&")) {
+            REGISTER_EMAIL_TEXT = colorize(REGISTER_EMAIL_TEXT);
+        }
+        return REGISTER_EMAIL_TEXT;
+    }
+
+    public static String getConfirmMessage(String value) {
+        if (CONFIRM_MESSAGE.contains("&")) {
+            CONFIRM_MESSAGE = colorize(CONFIRM_MESSAGE);
+        }
+        return String.format(CONFIRM_MESSAGE, value);
+    }
+
+    public static String getInvalidInputMessage(String type, String value) {
+        if (INVALID_INPUT_MESSAGE.contains("&")) {
+            INVALID_INPUT_MESSAGE = colorize(INVALID_INPUT_MESSAGE);
+        }
+        return String.format(INVALID_INPUT_MESSAGE, type, value);
+    }
+
+    public static String getPasswordText() {
+        if (PASSWORD_TEXT.contains("&")) {
+            PASSWORD_TEXT = colorize(PASSWORD_TEXT);
+        }
+        return PASSWORD_TEXT;
+    }
+
+    public static String getRegisterErrorText(int code) {
+        if (REGISTER_ERROR_TEXT.contains("&")) {
+            REGISTER_ERROR_TEXT = colorize(REGISTER_ERROR_TEXT);
+        }
+        return String.format(REGISTER_ERROR_TEXT, code);
+    }
 }
