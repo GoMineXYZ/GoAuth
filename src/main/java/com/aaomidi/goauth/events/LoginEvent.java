@@ -45,11 +45,11 @@ public class LoginEvent implements Listener {
 			} catch (XenAPIException ex) {
 				ex.printStackTrace(); // TODO remove later
 
-				scheduler.runTaskLater(instance, () -> {
+				scheduler.runTask(instance, () -> {
 					user.setRegistered(false);
 					player.sendMessage(Lang.getBLANK());
 					player.sendMessage(Lang.getRegisterText());
-				}, 10L);
+				});
 			}
 
 
