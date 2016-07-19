@@ -1,0 +1,6 @@
+name: GoAuth
+main: com.aaomidi.goauth.GoAuth
+version: 1.0
+commands:
+  register:
+    description: Registers you on the website.

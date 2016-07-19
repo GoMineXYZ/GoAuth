@@ -6,12 +6,19 @@ import lombok.Getter;
 import org.bukkit.plugin.java.JavaPlugin;
 import xyz.mkotb.xenapi.XenAPI;
 
+import java.io.File;
+
 public class GoAuth extends JavaPlugin {
 	@Getter
 	private XenAPI xenAPI;
 
 	@Override
 	public void onLoad() {
+		File file = new File(getDataFolder(), "config.yml");
+		if (!file.exists()) {
+			saveDefaultConfig();
+		}
+
 		ConfigReader.setConfig(getConfig());
 	}
 
