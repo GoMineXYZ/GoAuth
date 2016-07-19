@@ -2,6 +2,8 @@ package com.aaomidi.goauth;
 
 
 import com.aaomidi.goauth.data.ConfigReader;
+import com.aaomidi.goauth.events.ChatEvent;
+import com.aaomidi.goauth.events.LoginEvent;
 import lombok.Getter;
 import org.bukkit.plugin.java.JavaPlugin;
 import xyz.mkotb.xenapi.XenAPI;
@@ -25,6 +27,7 @@ public class GoAuth extends JavaPlugin {
 	@Override
 	public void onEnable() {
 		this.startXenAPI();
+		this.registerEvents();
 	}
 
 	@Override
@@ -34,5 +37,10 @@ public class GoAuth extends JavaPlugin {
 
 	private void startXenAPI() {
 		xenAPI = XenAPI.create(ConfigReader.getBaseURL(), ConfigReader.getKey());
+	}
+
+	public void registerEvents() {
+		this.getServer().getPluginManager().registerEvents(new ChatEvent(this), this);
+		this.getServer().getPluginManager().registerEvents(new LoginEvent(this), this);
 	}
 }

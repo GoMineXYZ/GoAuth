@@ -41,6 +41,7 @@ public class ChatEvent implements Listener {
 		if (user.isRegistered()) {
 			player.sendMessage(Lang.getBLANK());
 			player.sendMessage(Lang.getLoginText());
+			return;
 		}
 
 		player.sendMessage(Lang.getBLANK());
@@ -48,15 +49,15 @@ public class ChatEvent implements Listener {
 	}
 
 	@EventHandler
-    public void onPreCommand(PlayerCommandPreprocessEvent event) {
-        String message = event.getMessage();
-        String command = message.split(" ")[0].substring(1);
+	public void onPreCommand(PlayerCommandPreprocessEvent event) {
+		String message = event.getMessage();
+		String command = message.split(" ")[0].substring(1);
 
-        if (!"register".equals(command)) {
-            return;
-        }
+		if (!"register".equals(command)) {
+			return;
+		}
 
-        event.setCancelled(true);
-        new Conversation(instance, event.getPlayer(), new EmailPrompt()).begin();
-    }
+		event.setCancelled(true);
+		new Conversation(instance, event.getPlayer(), new EmailPrompt()).begin();
+	}
 }
