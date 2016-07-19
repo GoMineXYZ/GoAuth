@@ -42,12 +42,13 @@ public class PasswordPrompt extends RegexPrompt {
 
             try {
                 plugin.getXenAPI().registerUser(new RegisterRequest(player.getName(), password, email));
+                player.sendMessage("you registered yay");
                 // waht do now TODO
             } catch (XenAPIException ex) {
                 player.sendMessage(Lang.getRegisterErrorText(ex.id()));
             }
 
-            return Prompt.END_OF_CONVERSATION;
+            return null;
         });
     }
 }
